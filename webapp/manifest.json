@@ -1,0 +1,120 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "rwt.etp.ratelist",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.15.5",
+      "toolsId": "f4928de9-ad33-4f9b-b78b-02e000116ef7"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "ratelist-display": {
+          "semanticObject": "ratelist",
+          "action": "display",
+          "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.130.2",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "rwt.etp.ratelist.i18n.i18n"
+        }
+      },
+      "ProductListModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "preload": true,
+        "uri": "data/CostSheet.json"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "rwt.etp.ratelist.view",
+        "async": true,
+        "viewPath": "rwt.etp.ratelist.view"
+      },
+      "routes": [
+        {
+          "name": "RouteListPage",
+          "pattern": ":?query:",
+          "target": [
+            "TargetListPage"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetListPage": {
+          "id": "ListPage",
+          "name": "ListPage"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "rwt.etp.ratelist.view.App",
+      "type": "XML",
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "rwtetpratelist"
+  }
+}

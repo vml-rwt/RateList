@@ -1,0 +1,75 @@
+<mvc:View controllerName="rwt.etp.ratelist.controller.ListPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+				<Table id="idTable" sticky="ColumnHeaders" items="{path:'ProductListModel>/'}" updateFinished="onTblUpdateFinsh" backgroundDesign="Solid" class="sapUiMediumMarginBegin sapUiMediumMarginEnd">
+					<columns>
+						<Column mergeDuplicates="true">
+							<Text width="80%"
+                                id="idTxtPrd"
+                                text="Product"
+                            />
+						</Column>
+						<Column demandPopin="true"  mergeDuplicates="true">
+							<Text
+                                id="idTxtPrdDesc"
+                                text="Description"
+                            />
+						</Column>
+						<Column >
+							<Text id="idQty" text="Quantity" ></Text>
+						</Column>
+						<Column>
+							<Text
+                                id="idCP"
+                                text="Cost Price"
+                            />
+						</Column>
+						<Column>
+							<Text
+                                id="idSP"
+                                text="Selling Price"
+                            />
+						</Column>
+						<Column>
+							<Text
+                                id="idGST"
+                                text="GST"
+                            />
+						</Column>
+						<Column>
+							<Text
+                                id="idSPGST"
+                                text="SP+GST"
+                            />
+						</Column>
+					
+					</columns>
+					<items>
+						<ColumnListItem>
+							<cells>
+								<Text text="{ProductListModel>Product}" />
+								<Text text="{ProductListModel>ProductCode}" />
+								<Text text="{ProductListModel>Qty} {ProductListModel>Unit} "></Text>
+								<Text text="{ProductListModel>Cost_Price}" />
+								<Text text="{ProductListModel>Selling_Price}" />
+								<Text text="{= (${ProductListModel>Selling_Price}*0.18).toFixed(2)}" />
+								<Text text="{= (${ProductListModel>Selling_Price} + (${ProductListModel>Selling_Price} * 0.18)).toFixed(2) }" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+
+                </content>
+			<footer>
+				<OverflowToolbar>
+					<ToolbarSpacer />
+					<Button
+                        type="Accept"
+                        text="Download"
+                        press="onDwnldPrs"  />
+				</OverflowToolbar>
+			</footer>
+    </Page>
+</mvc:View>
